@@ -33,16 +33,16 @@ function App() {
     const isLoginPage = location.pathname === "/login";
 
     return (
-      <div className="flex">
+      <div className="fle">
         {/* {!isLoginPage && <Sidebar2 />} */}
-        <div className="flex-1 h-screen bg-black-100 overflow-hidden">{children}</div>
+        <div className=" h-screen">{children}</div>
       </div>
     );
   };
   return (
     <>
     <Router>
-      <div className="App bg-slate-500">
+      <div className="App bg-slate-100 w-full">
         {/* <Start /> */}
         <Layout>
           <Routes>
@@ -70,39 +70,7 @@ function App() {
             }
           />
 
-            {/* <Route
-              path="/labtestlist"
-              element={
-                <ProtectedRoute
-                  element={<LabTestList />}
-                  allowedRole="lab_admin"
-                />
-              }
-            /> */}
-            {/* <Route
-              path="/addtest"
-              element={
-                <ProtectedRoute element={<AddTest />} allowedRole="lab_admin" />
-              }
-            /> */}
-            {/* <Route
-              path="/addpackages"
-              element={
-                <ProtectedRoute
-                  element={<AddPackages />}
-                  allowedRole="lab_admin"
-                />
-              }
-            /> */}
-            {/* <Route
-              path="/PackageList"
-              element={
-                <ProtectedRoute
-                  element={<PackageList />}
-                  allowedRole="lab_admin"
-                />
-              }
-            /> */}
+     
            
             
             

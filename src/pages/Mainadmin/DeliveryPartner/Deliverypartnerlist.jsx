@@ -53,9 +53,12 @@ export default function Deliverypartnerlist() {
   };
 
   return (
-    <div className="p-6">
+    <div className="p-6 w-full">
+
       {isLoading && <Loader />}
-      <div className="flex items-center bg-blue-500 text-white p-4 rounded-lg shadow-md">
+
+
+      <div className="flex items-center bg-blue-500 text-white p-4 rounded-lg shadow-md w-fit">
         <div className="flex items-center">
           <i className="ri-user-shared-line text-3xl"></i>
         </div>
@@ -64,13 +67,24 @@ export default function Deliverypartnerlist() {
           <h4 className="text-sm">Total</h4>
         </div>
       </div>
+
+
+
+
+
       <h3 className="text-xl font-semibold my-6">Delivery Partner List</h3>
+
       <div className="overflow-x-auto">
-        <table className="min-w-full bg-white shadow-md rounded-lg">
+
+        <table className="min-w-full bg-white shadow-md ">
           <thead>
             <tr className="bg-gray-200 text-gray-700 uppercase text-sm">
               <th className="py-2 px-4">No</th>
-              <th className="py-2 px-4">Name
+              <th className="py-2 px-4">
+                
+                Name
+
+                
                 <input
                   type="text"
                   onChange={SearchData}
