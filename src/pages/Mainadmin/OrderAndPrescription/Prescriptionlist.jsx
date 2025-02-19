@@ -130,11 +130,66 @@ export default function Prescriptionlist({
         <thead>
           <tr className="bg-gray-100">
             <th className="border border-gray-300 p-2">No</th>
-            <th className="border border-gray-300 p-2">Order No</th>
-            <th className="border border-gray-300 p-2">Customer Name</th>
-            <th className="border border-gray-300 p-2">Mobile Number</th>
-            <th className="border border-gray-300 p-2">Pincode</th>
-            <th className="border border-gray-300 p-2">Date</th>
+            <th className="border border-gray-300 p-2">
+            <h1>Order No</h1>
+
+<input
+    className="w-full h-10 px-4 font-light"
+    type="text"
+    onChange={SearchData}
+    name="so_number"
+    placeholder="Search"
+  />
+
+            </th>
+
+            <th className="border border-gray-300 p-2">
+              
+            <h1>Name</h1>
+
+            <input
+                className="w-full h-10 px-4 font-light"
+                type="text"
+                onChange={SearchData}
+                name="patient_name"
+                placeholder="Search"
+              />
+
+            </th>
+            <th className="border border-gray-300 p-2">
+            <h1>Mobile Number</h1>
+
+<input
+    className="w-full h-10 px-4 font-light"
+    type="text"
+    onChange={SearchData}
+    name="contact_no"
+    placeholder="Search"
+  />
+
+            </th>
+            <th className="border border-gray-300 p-2">
+              
+            <h1> Pincode</h1>
+            <input
+    className="w-full h-10 px-4 font-light"
+    type="text"
+    onChange={SearchData}
+    name="pincode"
+    placeholder="Search"
+  />
+            </th>
+            <th className="border border-gray-300 p-2">
+            <h4>Date</h4>
+              <input
+                className="w-full h-10 px-4 font-light"
+                max={new Date().toISOString().split("T")[0]}
+                type="date"
+                onChange={filterDate}
+                name="created_date"
+              />
+
+            </th>
             <th className="border border-gray-300 p-2">Status</th>
           </tr>
         </thead>
