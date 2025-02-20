@@ -122,8 +122,14 @@ export default function Productdetail({
   };
 
   return (
+
+
+
     <div>
+
+
       {isLoading && <Loader />}
+      
       <div className="adpha-topcontainer">
         <div class="adpha-left">
           <button

@@ -216,9 +216,10 @@ function Prescriptions({ Details, setChangeDashboards }) {
   console.log("delieveryAgentDetails", delieveryAgentDetails);
   return (
     <div
+
+    className="w-full h-dvh p-6 overflow-y-auto"
       style={{
         position: "relative",
-        paddingTop: "1rem",
         paddingBottom: "1rem",
       }}
     >

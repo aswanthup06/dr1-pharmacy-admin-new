@@ -95,6 +95,7 @@ export default function Prescriptionlist({
 
   return (
     <div className="w-full h-dvh p-6 overflow-y-auto">
+
       {isLoading && <Loader />}
 
 
@@ -195,7 +196,7 @@ export default function Prescriptionlist({
         </thead>
         <tbody>
           {datalist.map((ele, index) => (
-            <tr key={index} onClick={() => navigateFn(ele)} className="cursor-pointer hover:bg-gray-50">
+            <tr key={index} onClick={() => navigateFn(ele)} className="cursor-pointer hover:bg-gray-50 text-sm">
               <td className="border border-gray-300 p-2">{index + 1}</td>
               <td className="border border-gray-300 p-2">{ele?.so_number}</td>
               <td className="border border-gray-300 p-2">{ele?.patient_name}</td>

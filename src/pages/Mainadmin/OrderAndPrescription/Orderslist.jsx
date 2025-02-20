@@ -102,19 +102,19 @@ export default function Orderslist({ updateState: { setChangeDashboards, setDeta
       </div>
 
       <h3 className="text-xl font-semibold mb-4">Sales Orders</h3>
-      <table className="w-full border-collapse border border-gray-300">
+      <table className="w-full border-collapse border border-gray-300 text-left">
         <thead>
           <tr className="bg-gray-100">
             <th className="p-3 border">No</th>
-            <th className="p-3 border">Order No <input type="text" name="so_number" onChange={SearchData} className="border p-1 w-full" /></th>
-            <th className="p-3 border">Customer Name <input type="text" name="users" onChange={SearchData} className="border p-1 w-full" /></th>
-            <th className="p-3 border">Mobile Number <input type="number" name="contact_no" onChange={SearchData} className="border p-1 w-full" /></th>
-            <th className="p-3 border">Pincode <input type="text" name="pincode" onChange={SearchData} className="border p-1 w-full" /></th>
-            <th className="p-3 border">Date <input type="date" max={new Date().toISOString().split("T")[0]} onChange={filterDate} className="border p-1 w-full" /></th>
+            <th className="p-3 border">Order No <input type="text" name="so_number" onChange={SearchData} className="border p-1 w-full font-light"  placeholder="Search" /> </th>
+            <th className="p-3 border">Customer Name <input type="text" name="users" onChange={SearchData} className="border p-1 w-full font-light" placeholder="Search" /> </th>
+            <th className="p-3 border">Mobile Number <input type="number" name="contact_no" onChange={SearchData} className="border p-1 w-full font-light" placeholder="Search" /> </th>
+            <th className="p-3 border">Pincode <input type="text" name="pincode" onChange={SearchData} className="border p-1 w-full font-light" placeholder="Search" /> </th>
+            <th className="p-3 border">Date <input type="date" max={new Date().toISOString().split("T")[0]} onChange={filterDate} className="border p-1 w-full font-light" placeholder="Search" /> </th>
             <th className="p-3 border">Status</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="text-sm">
           {datalist.map((ele, index) => (
             <tr key={index} className="cursor-pointer hover:bg-gray-50" onClick={() => navigateFn(ele)}>
               <td className="p-2 border">{index + 1}</td>

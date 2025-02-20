@@ -57,16 +57,13 @@ export default function Deliverypartnerlist() {
 
       {isLoading && <Loader />}
 
-
-      <div className="flex items-center bg-blue-500 text-white p-4 rounded-lg shadow-md w-fit">
-        <div className="flex items-center">
-          <i className="ri-user-shared-line text-3xl"></i>
+        <div className="flex items-center border p-4 rounded-lg shadow-md w-44">
+          <i className="ri-user-shared-line text-xl text-blue-500"></i>
+          <div className="ml-4">
+            <h2 className="text-lg font-semibold">{initialData?.length}</h2>
+            <h4 className="text-sm text-gray-600">Onboarded</h4>
+          </div>
         </div>
-        <div className="ml-4">
-          <h2 className="text-xl font-semibold">{initialData?.length}</h2>
-          <h4 className="text-sm">Total</h4>
-        </div>
-      </div>
 
 
 
@@ -76,7 +73,7 @@ export default function Deliverypartnerlist() {
 
       <div className="overflow-x-auto">
 
-        <table className="min-w-full bg-white shadow-md ">
+        <table className="min-w-full bg-white shadow-md text-left">
           <thead>
             <tr className="bg-gray-200 text-gray-700 uppercase text-sm">
               <th className="py-2 px-4">No</th>
@@ -90,16 +87,20 @@ export default function Deliverypartnerlist() {
                   onChange={SearchData}
                   name="name"
                   placeholder="Search Name"
-                  className="mt-1 p-1 border rounded w-full"
+                  className="mt-1 p-1 border  w-full  h-10 px-4 font-light"
                 />
               </th>
-              <th className="py-2 px-4">Contact No
+              <th className="py-2 px-4">
+                
+                Contact No
+
                 <input
                   type="text"
                   onChange={SearchData}
                   name="phone"
                   placeholder="Search Phone"
-                  className="mt-1 p-1 border rounded w-full"
+                 
+                  className="mt-1 p-1 border  w-full  h-10 px-4 font-light text-sm "
                 />
               </th>
               <th className="py-2 px-4">Pharmacy Name
@@ -107,15 +108,15 @@ export default function Deliverypartnerlist() {
                   type="text"
                   name="pharmacy_name"
                   placeholder="Search Pharmacy"
-                  className="mt-1 p-1 border rounded w-full"
+                  className="mt-1 p-1 border  w-full  h-10 px-4 font-light "
                 />
               </th>
               <th className="py-2 px-4">Wallet</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="text-sm">
             {datalist?.map((ele, index) => (
-              <tr key={index} className="border-t text-center">
+              <tr key={index} className="border-t">
                 <td className="py-2 px-4">{index + 1}</td>
                 <td className="py-2 px-4">{ele?.name}</td>
                 <td className="py-2 px-4">{ele?.phone}</td>
