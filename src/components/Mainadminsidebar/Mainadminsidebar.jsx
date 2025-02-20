@@ -6,7 +6,10 @@ export default function Mainadminsidebar({ data: { SentData, selected } }) {
     SentData(data);
   };
   return (
-    <div className="p-4 bg-gray-200 h-screen">
+    <div className="p-4 bg-gray-200 h-screen flex flex-col justify-between">
+
+<div>
+<img className="h-8 mb-5" src="drfull.png" alt=""/>
       {[
         { key: "orders", label: "Orders" },
         { key: "prescriptions", label: "Prescriptions" },
@@ -23,6 +26,22 @@ export default function Mainadminsidebar({ data: { SentData, selected } }) {
           <h4 className="text-sm font-normal">{item.label}</h4>
         </div>
       ))}
+
+</div>
+
+
+
+      <div>
+      
+        <button className="bg-white w-full p-3 text-red-500">Logout<i class="ri-login-box-line ml-2"></i></button>
+       
+ 
+
+     
+      </div>
+
+
+
     </div>
   );
 }
