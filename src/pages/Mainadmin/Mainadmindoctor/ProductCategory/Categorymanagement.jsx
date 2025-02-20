@@ -196,7 +196,7 @@ export default function Categorymanagement({
   }, [addcategory?.image]);
 
   return (
-    <div>
+    <div className="p-6">
       {/* <Loader /> */}
       {isLoading && <Loader />}
       <div className="adpha-topcontainer">
@@ -210,13 +210,16 @@ export default function Categorymanagement({
           <span className="adpha-title">Category Management</span>
         </div>
         <div className="adpha-right">
+
           <button
-            className="adpha-categ-button flex"
+            className="bg-emerald-700 text-white text-sm font-light flex h-10 px-4 items-center gap-3"
             onClick={() => setIsModalOpen(true)}
           >
             <i className="ri-add-circle-line"></i>
             <h4>Add Category</h4>
           </button>
+
+
         </div>
       </div>
 

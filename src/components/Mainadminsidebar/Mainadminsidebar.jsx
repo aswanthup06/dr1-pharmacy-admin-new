@@ -33,7 +33,7 @@ export default function Mainadminsidebar({ data: { SentData, selected } }) {
 
       <div>
       
-        <button className="bg-white w-full p-3 text-red-500">Logout<i class="ri-login-box-line ml-2"></i></button>
+        <button className="bg-white w-full p-3 text-red-500 hover:bg-red-500 hover:text-white duration-500">Logout<i class="ri-login-box-line ml-2"></i></button>
        
  
 
