@@ -10,8 +10,6 @@ import Mainadmin from "./pages/Mainadmin/Mainadmin/Mainadmin";
 import Login from "./pages/Mainadmin/Loginadmin/Login";
 import Billing from "./pages/Mainadmin/Billing/Billing";
 
-
-
 function App() {
   const isAuthenticated = () => {
     const user = JSON.parse(localStorage.getItem("user"));
@@ -41,47 +39,38 @@ function App() {
   };
   return (
     <>
-    <Router>
-      <div className="App bg-slate-100 w-full">
-        {/* <Start /> */}
-        <Layout>
-          <Routes>
-            <Route path="/login" element={<Login />} />
-            <Route path="/" element={<Navigate to="/login" replace />} />
-            <Route path="/unauthorized" element={<div>Unauthorized</div>} />
+      <Router>
+        <div className="App bg-slate-100 w-full">
+          {/* <Start /> */}
+          <Layout>
+            <Routes>
+              <Route path="/login" element={<Login />} />
+              <Route path="/" element={<Navigate to="/login" replace />} />
+              <Route path="/unauthorized" element={<div>Unauthorized</div>} />
 
-            <Route
-              path="/mainadmin"
-              element={
-                <ProtectedRoute
-                  element={<Mainadmin />}
-                  allowedRole="pharmacy_admin"
-                />
-              }
-            />
-
-<Route
-            path="/billing"
-            element={
-              <ProtectedRoute
-                element={<Billing />}
-                allowedRole="pharmacy_admin"
+              <Route
+                path="/mainadmin"
+                element={
+                  <ProtectedRoute
+                    element={<Mainadmin />}
+                    allowedRole="pharmacy_admin"
+                  />
+                }
               />
-            }
-          />
 
-     
-           
-            
-            
-           
-           
-           
-          </Routes>
-        </Layout>
-      </div>
-    </Router>
-     
+              <Route
+                path="/billing"
+                element={
+                  <ProtectedRoute
+                    element={<Billing />}
+                    allowedRole="pharmacy_admin"
+                  />
+                }
+              />
+            </Routes>
+          </Layout>
+        </div>
+      </Router>
     </>
   );
 }

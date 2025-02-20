@@ -1,15 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Mainadminsidebar from "../../../components/Mainadminsidebar/Mainadminsidebar";
-import Mainadminnavbar from "../../../components/Mainadminnavbar/Mainadminnavbar";
 
-
-
-
-import Mainadminonboarding from "../Mainadminonboarding/Mainadminonboarding";
-import { MainAdminCategoryEdit } from "../MainAdminCategoryEdit/MainAdminCategoryEdit";
-
-import Adminlist from "../ManageAdmin/Adminlist";
-import Addadmins from "../ManageAdmin/Addadmins";
 import Prescriptions from "../OrderAndPrescription/Prescriptions";
 import Orderslist from "../OrderAndPrescription/Orderslist";
 import Prescriptionlist from "../OrderAndPrescription/Prescriptionlist";
@@ -25,7 +16,7 @@ import Deliverypartnerlist from "../DeliveryPartner/Deliverypartnerlist";
 
 export default function Mainadmin() {
   const [ChangeDashboards, setChangeDashboards] = useState({
-    doctor: true,
+    orders: true,
   });
   const [DetailData, setDetailData] = useState();
   const SentData = (data) => {
@@ -43,93 +34,82 @@ export default function Mainadmin() {
 
   console.log("ChangeDashboards>>>>", ChangeDashboards);
   return (
-  
-      
-      <div className="flex">
-
-<div className="w-2/12">
+    <div className="flex">
+      <div className="w-2/12">
         <Mainadminsidebar
           data={{ SentData: SentData, selected: ChangeDashboards }}
         />
-</div>
-        <div className="w-10/12">
-      
+      </div>
+      <div className="w-10/12">
+        {/* {ChangeDashboards?.manageadmin && (
+          <>
+            <Adminlist setChangeDashboards={setChangeDashboards} />
+          </>
+        )} */}
+        {/* {ChangeDashboards?.addadmin && (
+          <>
+            <Addadmins />
+          </>
+        )} */}
+        {ChangeDashboards?.orders && (
+          <>
+            <Orderslist updateState={{ setChangeDashboards, setDetailData }} />
+          </>
+        )}
 
-            {ChangeDashboards?.manageadmin && (
-              <>
-                <Adminlist setChangeDashboards={setChangeDashboards} />
-              </>
-            )}
-            {ChangeDashboards?.addadmin && (
-              <>
-                <Addadmins />
-              </>
-            )}
-            {ChangeDashboards?.orders && (
-              <>
-                <Orderslist
-                  updateState={{ setChangeDashboards, setDetailData }}
-                />
-              </>
-            )}
+        {ChangeDashboards?.prescriptions && (
+          <>
+            <Prescriptionlist
+              updateState={{ setChangeDashboards, setDetailData }}
+            />
+          </>
+        )}
+        {ChangeDashboards?.prescriptionOrderDetail && (
+          <>
+            <Prescriptions
+              Details={DetailData}
+              setChangeDashboards={setChangeDashboards}
+            />
+          </>
+        )}
+        {ChangeDashboards?.deliverypartners && (
+          <>
+            <Deliverypartnerlist
+              Details={DetailData}
+              setChangeDashboards={setChangeDashboards}
+            />
+          </>
+        )}
+        {ChangeDashboards?.productmanagement && (
+          <>
+            <Productlist updateState={{ setChangeDashboards, setDetailData }} />
+          </>
+        )}
 
-            {ChangeDashboards?.prescriptions && (
-              <>
-                <Prescriptionlist
-                  updateState={{ setChangeDashboards, setDetailData }}
-                />
-              </>
-            )}
-            {ChangeDashboards?.prescriptionOrderDetail && (
-              <>
-                <Prescriptions
-                  Details={DetailData}
-                  setChangeDashboards={setChangeDashboards}
-                />
-              </>
-            )}
-            {ChangeDashboards?.deliverypartners && (
-              <>
-                <Deliverypartnerlist
-                  Details={DetailData}
-                  setChangeDashboards={setChangeDashboards}
-                />
-              </>
-            )}
-            {ChangeDashboards?.productmanagement && (
-              <>
-                <Productlist
-                  updateState={{ setChangeDashboards, setDetailData }}
-                />
-              </>
-            )}
+        {ChangeDashboards?.productmanagementOrderDetail && (
+          <>
+            <Productdetail
+              updateState={{ setChangeDashboards, setDetailData }}
+              Details={DetailData}
+            />
+          </>
+        )}
 
-            {ChangeDashboards?.productmanagementOrderDetail && (
-              <>
-                <Productdetail
-                  updateState={{ setChangeDashboards, setDetailData }}
-                  Details={DetailData}
-                />
-              </>
-            )}
+        {ChangeDashboards?.categorymanagement && (
+          <>
+            <Categorymanagement updateState={{ setChangeDashboards }} />
+          </>
+        )}
 
-
-            {ChangeDashboards?.categorymanagement && (
-              <>
-                <Categorymanagement updateState={{ setChangeDashboards }} />
-              </>
-            )} 
-
-            {ChangeDashboards?.addproduct && (
-              <>
-                <Addproduct
-                  updateState={{ setChangeDashboards, setDetailData }}
-                  Details={DetailData}
-                />
-
-              </>
-            )}
-        </div>
-</div>
+        {ChangeDashboards?.addproduct && (
+          <>
+            <Addproduct
+              updateState={{ setChangeDashboards, setDetailData }}
+              Details={DetailData}
+            />
+          </>
+        )}
+      </div>
+    </div>
   );
 }

@@ -26,7 +26,7 @@ export default function Addproduct({
 }) {
   const [product, setproduct] = useState(() => Details || {});
   const [errors, setErrors] = useState({});
-
+console.log({Details})
   const [images, setImages] = useState(() => {
     return Details?.images
       ? [
@@ -148,8 +148,8 @@ export default function Addproduct({
   };
   const handleBackClick = () => {
     setChangeDashboards({
-      productmanagement: !Details.id ? true : false,
-      productmanagementOrderDetail: Details.id ? true : false,
+      productmanagement: !Details?.id ? true : false,
+      productmanagementOrderDetail: Details?.id ? true : false,
     });
   };
   const isMedicineIncludedInCategory = () => {
