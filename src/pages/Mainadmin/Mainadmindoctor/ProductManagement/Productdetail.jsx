@@ -125,7 +125,7 @@ export default function Productdetail({
 
 
 
-    <div>
+    <div className="p-6">
 
 
       {isLoading && <Loader />}
