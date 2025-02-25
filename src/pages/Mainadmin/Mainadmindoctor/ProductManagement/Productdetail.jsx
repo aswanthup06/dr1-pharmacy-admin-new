@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./addproduct.css";
 import axios from "axios";
 import { PHARMACY_URL } from "../../../../config";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import { Loader } from "../../../../components/Loader/Loader";
 export default function Productdetail({
   updateState: { setChangeDashboards, setDetailData },
@@ -17,8 +17,6 @@ export default function Productdetail({
       return {};
     }
   });
-
-  console.log({ datastate });
 
   const [isLoading, setIsLoading] = useState(false);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
@@ -49,14 +47,13 @@ export default function Productdetail({
           images: datastate?.images,
           hsn: datastate?.hsn,
           product_type: datastate?.product_type,
-          medicine_type: datastate?.medicine_type||"",
+          medicine_type: datastate?.medicine_type || "",
           unit_of_measurement: datastate?.unit_of_measurement,
           medicine_unit: datastate?.medicine_unit,
         })
       );
 
       // Log FormData entries for debugging
-      console.log("FormData entries:");
       for (let pair of formData.entries()) {
         console.log(`${pair[0]}: ${pair[1]}`);
       }
@@ -110,8 +107,18 @@ export default function Productdetail({
       );
       if (response.status === 200) {
         setIsLoading(false);
-        toast.success(response?.data?.message);
-        setChangeDashboards({ productmanagement: true });
+
+        toast.success(response?.data?.message, {
+          position: "top-right",
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          onClose: () => setChangeDashboards({ productmanagement: true }),
+        });
       }
       console.log("Product disabled successfully:", response.data);
     } catch (error) {
@@ -122,14 +129,11 @@ export default function Productdetail({
   };
 
   return (
-
-
-
     <div className="p-6">
-
+      <ToastContainer />
 
       {isLoading && <Loader />}
-      
+
       <div className="adpha-topcontainer">
         <div class="adpha-left">
           <button

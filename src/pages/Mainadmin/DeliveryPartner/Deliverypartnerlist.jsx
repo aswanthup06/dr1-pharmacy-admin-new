@@ -8,7 +8,7 @@ export default function Deliverypartnerlist() {
   const [datalist, setdatalist] = useState([]);
   const [initialData, setinitialData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-
+console.log({datalist})
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -107,11 +107,13 @@ export default function Deliverypartnerlist() {
                 <input
                   type="text"
                   name="pharmacy_name"
+                  onChange={SearchData}
                   placeholder="Search Pharmacy"
                   className="mt-1 p-1 border  w-full  h-10 px-4 font-light "
                 />
               </th>
-              <th className="py-2 px-4">Wallet</th>
+              <th className="py-2 px-4">Wallet Date </th>
+              <th className="py-2 px-4">Wallet Amount </th>
             </tr>
           </thead>
           <tbody className="text-sm">
@@ -121,6 +123,7 @@ export default function Deliverypartnerlist() {
                 <td className="py-2 px-4">{ele?.name}</td>
                 <td className="py-2 px-4">{ele?.phone}</td>
                 <td className="py-2 px-4">{ele?.pharmacy_name}</td>
+                <td className="py-2 px-4">{ele?.wallet_date}</td>
                 <td className={`py-2 px-4 ${ele?.wallet > 0 ? 'text-red-500' : 'text-black'}`}>{ele?.wallet}</td>
               </tr>
             ))}

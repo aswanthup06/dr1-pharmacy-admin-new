@@ -88,17 +88,18 @@ export default function Productlist({
     // }
   };
 
+  const navigateadd = () => {
+    setDetailData();
+    setChangeDashboards({ addproduct: true });
+  };
+
   return (
     <div className="w-full h-dvh p-6 overflow-y-auto">
       <h3 className="text-xl font-semibold mb-4">Product Management</h3>
       {isLoading && <Loader />}
 
       <div className="flex justify-between items-center mb-6">
-
-
         <div className="flex gap-4">
-
-
           <div className="relative h-10">
             <input
               ref={searchRef}
@@ -108,24 +109,18 @@ export default function Productlist({
               onChange={(e) => handleSearchChange(e.target.value)}
             />
 
-<i className="absolute left-3 top-1/2  transform  -translate-y-1/2 text-gray-400 ri-search-2-line"></i>
-
-
-
+            <i className="absolute left-3 top-1/2  transform  -translate-y-1/2 text-gray-400 ri-search-2-line"></i>
           </div>
 
-<div className="w-64">
-          <CustomSelect
-            value={selectedCategory}
-            onChange={(value) => handleSelectChange("category", value)}
-            placeholder="Select category"
-            options={categories}
-          />
-
-</div>
-
+          <div className="w-64">
+            <CustomSelect
+              value={selectedCategory}
+              onChange={(value) => handleSelectChange("category", value)}
+              placeholder="Select category"
+              options={categories}
+            />
+          </div>
         </div>
-
 
         <div className="flex gap-4">
           <button
@@ -135,61 +130,53 @@ export default function Productlist({
             Manage Category
           </button>
           <button
-            onClick={() => setChangeDashboards({ addproduct: true })}
+            onClick={navigateadd}
             className="flex items-center bg-blue-600 text-white px-4 h-10 font-light text-sm"
           >
             <i className="ri-add-circle-line mr-2"></i> Add New Product
           </button>
         </div>
-
-
       </div>
 
-
-
-
       <div className="grid grid-cols-5 gap-2">
+        {filteredState?.map((product, index) => (
+          <div
+            key={index}
+            onClick={() => setDetailData({ data: product })}
+            className="bg-gray-100 p-4 border  cursor-pointer hover:shadow-md"
+          >
+            <div className="flex justify-center items-center h-32 mb-4">
+              <img
+                src={product?.images?.image1}
+                alt={product?.name || "Product Image"}
+                className="max-h-full max-w-full"
+              />
+            </div>
 
+            <div className="mb-2">
+              <h4 className="text-sm text-gray-600">{product?.brand}</h4>
+              <h3 className="text-base font-semibold">
+                {product?.name.length > 20
+                  ? `${product?.name.substring(0, 20)}...`
+                  : product?.name}
+              </h3>
+            </div>
 
-      {filteredState?.map((product, index) => (
-  <div
-    key={index}
-    onClick={() => setDetailData({ data: product })}
-    className="bg-gray-100 p-4 border  cursor-pointer hover:shadow-md"
-  >
-    <div className="flex justify-center items-center h-32 mb-4">
-      <img
-        src={product?.images?.image1}
-        alt={product?.name || "Product Image"}
-        className="max-h-full max-w-full"
-      />
-    </div>
+            <div className="flex justify-between items-center">
+              <h2 className="text-lg font-bold">₹ {product?.mrp}</h2>
 
-    <div className="mb-2">
-      <h4 className="text-sm text-gray-600">{product?.brand}</h4>
-      <h3 className="text-base font-semibold">
-        {product?.name.length > 20
-          ? `${product?.name.substring(0, 20)}...`
-          : product?.name}
-      </h3>
-    </div>
-
-    <div className="flex justify-between items-center">
-      <h2 className="text-lg font-bold">₹ {product?.mrp}</h2>
-
-      <button
-        onClick={(e) => {
-          e.stopPropagation(); // Prevent parent `onClick`
-          navigateAddP(product);
-        }}
-        className="bg-blue-500 text-white px-4 py-1 text-sm font-light"
-      >
-        View
-      </button>
-    </div>
-  </div>
-))}
-
+              <button
+                onClick={(e) => {
+                  e.stopPropagation(); // Prevent parent `onClick`
+                  navigateAddP(product);
+                }}
+                className="bg-blue-500 text-white px-4 py-1 text-sm font-light"
+              >
+                View
+              </button>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );

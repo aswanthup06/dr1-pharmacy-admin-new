@@ -39,6 +39,7 @@ export default function Login() {
           type="text"
           placeholder="User Name"
           value={username}
+          maxLength={20}
           onChange={(e) => setUsername(e.target.value)}
         />
         <i className="ri-user-6-line absolute left-3 top-1/2 -translate-y-1/2"></i>
@@ -51,6 +52,7 @@ export default function Login() {
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          maxLength={20}
         />
         <i className="ri-lock-password-line absolute left-3 top-1/2 -translate-y-1/2"></i>
       </div>
